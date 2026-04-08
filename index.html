@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>교육운영팀 발표 순서 룰렛</title>
+  <title>발표 순서 룰렛</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -349,8 +349,9 @@ function spin() {
   const totalRot = Math.PI * 2 * spins;
   const pointerAngle = -Math.PI / 2;
   const targetCenter = winIdx * sliceAngle + sliceAngle / 2;
-  const targetAngle = pointerAngle - targetCenter - currentAngle;
-  const finalRot = totalRot + ((targetAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+  const targetAngle = pointerAngle - targetCenter;
+  const offset = ((targetAngle - currentAngle) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
+  const finalRot = totalRot + offset;
 
   const startAngle = currentAngle;
   const duration = 3500 + Math.random() * 1000;
